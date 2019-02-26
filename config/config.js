@@ -1,22 +1,25 @@
 import firebase from 'firebase';
 
 //api details
- const config = {
-   apiKey: "AIzaSyAMhxepwKlCtWsFuzB6stwfV2F41iDjTps",
-   authDomain: "photofeed2-d58be.firebaseapp.com",
-   databaseURL: "https://photofeed2-d58be.firebaseio.com",
-   projectId: "photofeed2-d58be",
-   storageBucket: "photofeed2-d58be.appspot.com",
-   messagingSenderId: "508457832851"
- };
+const config = {
+    apiKey: "AIzaSyCNmnJYfc812JjunGYGhoG9Wez327CG-AI",
+    authDomain: "backup-87d27.firebaseapp.com",
+    databaseURL: "https://backup-87d27.firebaseio.com",
+    projectId: "backup-87d27",
+    storageBucket: "",
+    messagingSenderId: "600746271463"
+  };
+  firebase.initializeApp(config);
 
- firebase.initializeApp(config);
-
- //connect each parts of firebase features to variables for us to use throughout our application
+//connect each parts of firebase features to variables for us to use throughout our application
 export const f = firebase;
 export const database = firebase.database();
 export const auth = firebase.auth();
 export const storage = firebase.storage();
+
+
+
+
 
 // ****set data*******
 //database.ref('/refName/childRef2').set("value!");
@@ -29,3 +32,12 @@ export const storage = firebase.storage();
 
 ///****delete data*****
 //database.ref('/numbers').remove();
+
+/*
+******database strucure *********
+Users/userid/   email,name,username,avatar
+
+Photos/photo-id  author,caption,posted,url
+
+Comments/photo-id//comment-id  author,posted,comment
+*/
