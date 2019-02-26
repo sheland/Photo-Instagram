@@ -52,9 +52,14 @@ class profile extends React.Component{
               <TouchableOpacity style={{ marginTop: 10, marginHorizontal: 40, paddingVertical: 15, borderRadius: 20, borderColor: 'grey', borderWidth: 1.5}}>
                 <Text style={{ textAlign: 'center', color: 'grey' }}>Edit Profile</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={{ backgroundColor: 'grey', marginTop: 10, marginHorizontal: 40, paddingVertical: 35, borderRadius: 20, borderColor: 'grey', borderWidth: 1.5}}>
+              <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('Upload')}
+              style={{ backgroundColor: 'grey', marginTop: 10, marginHorizontal: 40, paddingVertical: 35, borderRadius: 20, borderColor: 'grey', borderWidth: 1.5}}>
                 <Text style={{ textAlign: 'center', color: 'white' }}>Upload +</Text>
               </TouchableOpacity>
+            </View>
+            <View style={{flex:1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'green'}}>
+              <Text>loading photos...</Text>
             </View>
           </View>
         ) : (
