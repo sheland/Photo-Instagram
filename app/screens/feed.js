@@ -19,6 +19,44 @@ class feed extends React.Component{
     this.loadFeed();
   }
 
+  pluralCheck = (s) => {
+    if(s == 1){
+      return ' ago';
+    }else{
+      return 's ago';
+    }
+  }
+
+  timeConverter = (timestamp) => {
+
+    //seconds = today's date - timestamp's date
+    var a = new Date(timestamp * 1000);
+    var seconds = Math.floor((new Date() - a) / 1000);
+
+    var interval = Math.floor(seconds / 31536000);
+    if(interval > 1){
+      return interval+ ' year'+this.pluralCheck(interval);
+    }
+    interval = Math.floor(seconds / 2592000);
+    if(interval > 1){
+      return interval+ ' month'+this.pluralCheck(interval);
+    }
+    interval = Math.floor(seconds / 86400);
+    if(interval > 1){
+      return interval+ ' day'+this.pluralCheck(interval);
+    }
+    interval = Math.floor(seconds / 3600);
+    if(interval > 1){
+      return interval+ ' hour'+this.pluralCheck(interval);
+    }
+    interval = Math.floor(seconds / 60);
+    if(interval > 1){
+      return interval+ ' minute'+this.pluralCheck(interval);
+    }
+    return Math.floor(seconds)+ ' second'+this.pluralCheck(seconds);
+
+  }
+
   loadFeed = () => {
     this.setState({
       refresh: true,
@@ -41,7 +79,7 @@ class feed extends React.Component{
                   id: photo,
                   url: photoObj.url,
                   caption: photoObj.caption,
-                  posted: photoObj.posted,
+                  posted: that.timeConverter(photoObj.posted),
                   author: data.username
                 });
 
@@ -86,17 +124,17 @@ class feed extends React.Component{
           renderItem={({item, index}) => (
             <View key={index} style={{width: '100%', overflow: 'hidden', marginBottom: 5, justifyContent: 'space-between', borderBottomWidth: 1, bordercolor: 'grey'}}>
               <View style={{padding: 5, width: '100%', flexDirection: 'row', justifyContent: 'space-between' }}>
-                <Text>Time ago</Text>
-                <Text>@Rusty</Text>
+                <Text>{item.posted}</Text>
+                <Text>{item.author}</Text>
               </View>
               <View>
                 <Image
-                  source={{uri: 'https://source.unsplash.com/random/500x'+Math.floor((Math.random() * 800) + 500) }}
+                  source={{uri: item.url }}
                   style={{resizeMode: 'cover', width: '100%', height: 275}}
                   />
               </View>
               <View style={{padding: 5}}>
-                <Text>Caption test here...</Text>
+                <Text>{item.caption}</Text>
                 <Text style={{marginTop: 10, textAlign: 'center'}}>View Comments...</Text>
               </View>
             </View>
