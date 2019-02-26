@@ -72,6 +72,7 @@ class feed extends React.Component{
 
         for(var photo in data){
           var photoObj = data[photo];
+          
             database.ref('users').child(photoObj.author).child('username').once('value').then(function(snapshot) {
               const exists = (snapshot.val() !== null);
               if(exists) data = snapshot.val();
@@ -140,7 +141,7 @@ class feed extends React.Component{
               <View style={{padding: 5}}>
                 <Text>{item.caption}</Text>
                 <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('Comments', {userId: item.id})}>
+                onPress={() => this.props.navigation.navigate('User', {userId: item.authorId})}>
                   <Text style={{color: 'blue', marginTop: 10, textAlign: 'center'}}>[View Comments...]</Text>
                 </TouchableOpacity>
               </View>

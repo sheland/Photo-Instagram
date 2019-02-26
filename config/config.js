@@ -2,12 +2,12 @@ import firebase from 'firebase';
 
 //api details
 const config = {
-    apiKey: "AIzaSyCNmnJYfc812JjunGYGhoG9Wez327CG-AI",
-    authDomain: "backup-87d27.firebaseapp.com",
-    databaseURL: "https://backup-87d27.firebaseio.com",
-    projectId: "backup-87d27",
-    storageBucket: "",
-    messagingSenderId: "600746271463"
+  apiKey: "AIzaSyCNmnJYfc812JjunGYGhoG9Wez327CG-AI",
+  authDomain: "backup-87d27.firebaseapp.com",
+  databaseURL: "https://backup-87d27.firebaseio.com",
+  projectId: "backup-87d27",
+  storageBucket: "backup-87d27.appspot.com",
+  messagingSenderId: "600746271463"
   };
   firebase.initializeApp(config);
 

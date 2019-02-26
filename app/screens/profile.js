@@ -17,7 +17,7 @@ class profile extends React.Component{
       if(user){
         //logged in
         that.setState({
-          loggedin: true
+          loggedinloggedin: true
         });
       }else{
         //not logged in
